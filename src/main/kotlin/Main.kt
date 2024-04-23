@@ -1,7 +1,5 @@
 package org.example
 
-import kotlin.math.*
-
 fun main() {
 
     println("계산기 동작을 시작합니다.")
