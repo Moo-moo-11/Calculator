@@ -2,7 +2,7 @@ package org.example
 
 fun main() {
 
-    println("계산기 동작을 시작합니다.")
+    println("----- 계산기 동작을 시작합니다. -----")
 
     while (!wantToEndCalculator) {
 
@@ -14,7 +14,11 @@ fun main() {
         // 종료를 선택하지 않았을때만 동작
         if (operator != "7") {
 
-            println("[주의] 숫자는 -2147483648 ~ 2147483647 사이의 정수만 입력가능합니다.")
+            if (operator == "6") {
+                println("암산왕: \"숫자 2개를 입력해주면 더해줄게요. 너무 큰 숫자는 제가 못 알아봐요 ㅜ_ㅜ\"")
+            } else {
+                println("[주의] 숫자는 -2147483648 ~ 2147483647 사이의 정수만 입력가능합니다.")
+            }
 
             getFirstNumbInput()
 
@@ -70,20 +74,27 @@ fun getFirstNumbInput() {
 
         val firstNumbInputString = readln()
 
-        if (Regex("^0+[0-9]+") matches firstNumbInputString ||
+        if ((Regex("^0+[0-9]+") matches firstNumbInputString ||
+            Regex("^-0+[0-9]*") matches firstNumbInputString) && operator == "6") {
+            println("그거 숫자 맞아요? 다시 입력해주세요")
+        } else if (Regex("^0+[0-9]+") matches firstNumbInputString ||
             Regex("^-0+[0-9]*") matches firstNumbInputString) {
             println("잘못 입력하셨습니다. 다시 입력해주세요.")
         } else {
+
             val firstNumbInput = firstNumbInputString.toIntOrNull()
 
-            if (firstNumbInput == null) {
+            if (firstNumbInput == null && operator == "6") {
+                println("그거 숫자 맞아요? 다시 입력해주세요")
+            } else if (firstNumbInput == null) {
                 println("잘못 입력하셨습니다. 다시 입력해주세요.")
-            } else if (firstNumbInput < 0 && operator == "6") {
+             }else if (firstNumbInput < 0 && operator == "6") {
                 println("(〃´o｀)=3 앞에 붙은 짝대기는 뭐에요? 그런거 몰라요. 다른 숫자 주세요")
             } else {
                 firstNumb = firstNumbInput
                 validFirstNumb = true
             }
+
         }
 
     }
@@ -99,13 +110,18 @@ fun getSecondNumbInput() {
 
         val secondNumbInputString = readln()
 
-        if (Regex("^0+[0-9]+") matches secondNumbInputString ||
+        if ((Regex("^0+[0-9]+") matches secondNumbInputString ||
+            Regex("^-0+[0-9]*") matches secondNumbInputString) && operator == "6") {
+            println("그거 숫자 맞아요? 다시 입력해주세요")
+        } else if (Regex("^0+[0-9]+") matches secondNumbInputString ||
             Regex("^-0+[0-9]*") matches secondNumbInputString) {
             println("잘못 입력하셨습니다. 다시 입력해주세요.")
         } else {
             val secondNumbInput = secondNumbInputString.toIntOrNull()
 
-            if (secondNumbInput == null) {
+            if (secondNumbInput == null && operator == "6") {
+                println("그거 숫자 맞아요? 다시 입력해주세요")
+            } else if (secondNumbInput == null) {
                 println("잘못 입력하셨습니다. 다시 입력해주세요.")
             } else if (secondNumbInput < 0 && operator == "6") {
                 println("(〃´o｀)=3 앞에 붙은 짝대기는 뭐에요? 그런거 몰라요. 다른 숫자 주세요")
