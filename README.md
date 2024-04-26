@@ -7,7 +7,7 @@
 <br/>
 
 ## :scroll: 계산기 작동 순서도
-![Picture](flowchart.png)
+![Picture](calflowchart.png)
 
 <br/>
 
