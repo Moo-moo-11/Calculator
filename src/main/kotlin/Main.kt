@@ -88,7 +88,7 @@ fun getFirstNumbInput() {
                 println("그거 숫자 맞아요? 다시 입력해주세요")
             } else if (firstNumbInput == null) {
                 println("잘못 입력하셨습니다. 다시 입력해주세요.")
-             }else if (firstNumbInput < 0 && operator == "6") {
+            } else if (firstNumbInput < 0 && operator == "6") {
                 println("(〃´o｀)=3 앞에 붙은 짝대기는 뭐에요? 그런거 몰라요. 다른 숫자 주세요")
             } else {
                 firstNumb = firstNumbInput
